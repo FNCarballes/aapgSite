@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 213 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 50% 10%;
+
+    --primary: 210 100% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 60% 92%;
+    --secondary-foreground: 210 100% 20%;
+
+    --muted: 210 20% 95%;
+    --muted-foreground: 210 15% 45%;
+
+    --accent: 42 70% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 25% 88%;
+    --input: 210 25% 88%;
+    --ring: 210 100% 40%;
+
+    --radius: 0.5rem;
+
+    --aapg-navy: 210 100% 20%;
+    --aapg-blue: 210 100% 35%;
+    --aapg-light: 210 60% 95%;
+    --aapg-gold: 38 100% 52%;
+    --aapg-gold-light: 42 80% 65%;
+
+    --sidebar-background: 210 100% 15%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 42 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 100% 25%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 210 60% 25%;
+    --sidebar-ring: 42 70% 50%;
+  }
+
+  .dark {
+    --background: 213 50% 5%;
+    --foreground: 210 20% 95%;
+
+    --card: 213 45% 8%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 213 45% 8%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 210 80% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 15%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 210 30% 15%;
+    --muted-foreground: 210 15% 60%;
+
+    --accent: 42 70% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 18%;
+    --input: 210 30% 18%;
+    --ring: 210 80% 55%;
+
+    --aapg-navy: 210 80% 55%;
+    --aapg-blue: 210 70% 45%;
+    --aapg-light: 210 30% 15%;
+    --aapg-gold: 42 100% 62%;
+    --aapg-gold-light: 42 80% 65%;
+
+    --sidebar-background: 213 50% 5%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 42 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 210 30% 18%;
+    --sidebar-ring: 42 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(42, 100%, 62%), hsl(42, 85%, 52%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-aapg-gradient {
+    background: linear-gradient(135deg, #0c2e63, #06183a);
+  }
+
+  .bg-aapg-gradient-dark {
+    background: linear-gradient(135deg, hsl(210 100% 12%), hsl(210 100% 20%));
+  }
+}
+
+.custom-scrollbar {
+  scrollbar-gutter: stable;
+  
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent; 
+}
+
+.custom-scrollbar:hover {
+  scrollbar-color: #cbd5e1 transparent; 
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* WebKit: Mantenemos el pulgar transparente por defecto */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent; 
+  border-radius: 10px;
+}
+
+/* WebKit: Coloreamos el pulgar en hover */
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1; 
+}
