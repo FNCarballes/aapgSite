@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, BookOpen, Lightbulb, Users, ArrowRight, Clock, PinIcon } from "lucide-react";
+import { Calendar, MapPin, BookOpen, Lightbulb, Users, ArrowRight, Clock, PinIcon, Pen } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import CharlaHugo from "@/assets/CharlaHugo.jpg"
@@ -8,6 +8,7 @@ import CharlaDaniel from "@/assets/CharlaDaniel.png"
 import JuntaIBA from "@/assets/JuntaIBA.jpeg"
 import CharlaVictoriaYPaol from "@/assets/CharlaVictoriaYPaola.png"
 import Recaudacion from "@/assets/Recaudacion.jpeg"
+import FlyerCharlaImgPozo from "@/assets/ImgPozo.jpeg"
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -16,9 +17,12 @@ const fadeInUp = {
 
 
 const events = [
-  { title: "Charla extendida de análisis de imágenes de pozos", date: "Lunes 4 de Mayo - 16 a 20 hs", location: "Aula a confirmar, FCEFyN", lecturer: "Mariana Patamia", image: "", inscriptionRequired: false },
-  // { title: "Charla: Geología de Vaca Muerta", date: "15 Mar 2026", location: "Sala de Conferencias", lecturer: "15/60" },
-  // { title: "Salida de Campo: Sierras de Córdoba", date: "22 Mar 2026", location: "Punto de encuentro: FCEFyN", lecturer: "8/25" },
+  {
+    title: "Charla extendida de análisis de imágenes de pozos",
+    date: "Lunes 4 de Mayo - 16 a 19 hs",
+    summary: "Se abordarán los fundamentos de las imágenes de pozo y su calidad, para luego aplicar estos conceptos en la interpretación de ejemplos reales",
+    location: "Aula 700 FCEFyN, con transmisión por Meet y YouTube", lecturer: "Geóloga Mariana Patamia", image: FlyerCharlaImgPozo, inscriptionRequired: false
+  },
 ];
 
 
@@ -54,10 +58,12 @@ const Eventos = () => {
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                 <Card className="h-full">
                   {ev.image && <div className="h-40 bg-secondary flex items-center justify-center">
-                    <Calendar className="h-10 w-10 text-muted-foreground/30" />
+                    <img src={ev.image} className="h-full w-full object-cover" />
                   </div>}
                   <CardContent className="p-6">
                     <h3 className="font-heading text-lg font-bold">{ev.title}</h3>
+                    <h4 className="font-heading text-base text-muted-foreground font-medium">{ev.summary}</h4>
+
                     <div className="mt-3 space-y-1.5 text-sm text-muted-foreground">
                       <div className="flex items-center gap-2"><Clock className="h-3.5 w-3.5 text-aapg-gold" />{ev.date}</div>
                       <div className="flex items-center gap-2"><Users className="h-3.5 w-3.5 text-aapg-gold" />Disertante: {ev.lecturer}</div>
