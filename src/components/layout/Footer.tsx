@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, Facebook, Instagram, Linkedin, Youtube, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Instagram, Linkedin, Youtube, ArrowRight } from "lucide-react";
 import LogoAAPG from "@/assets/logoAAPG.png";
 import devPhoto from "@/assets/devPhoto.png"
 
@@ -80,17 +80,9 @@ const Footer = () => {
               Contactar desarrollador <ArrowRight className="w-5 h-5" />
             </a>
 
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-56 rounded-2xl bg-white p-4 shadow-xl opacity-0 invisible transition-all duration-300 group-hover:visible group-hover:opacity-100 group-hover:-translate-y-2 z-50 flex flex-col items-center border border-gray-100 after:content-[''] after:absolute after:w-full after:h-8 after:-bottom-8 after:left-0">
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-58 rounded-2xl bg-white py-4 px-[15px] shadow-xl opacity-0 invisible transition-all duration-300 group-hover:visible group-hover:opacity-100 group-hover:-translate-y-2 z-50 flex flex-col items-center border border-gray-100 after:content-[''] after:absolute after:w-full after:h-8 after:-bottom-8 after:left-0">
 
               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 border-[8px] border-transparent border-t-white"></div>
-
-              <div className="h-[120px] w-[120px] rounded-full overflow-hidden border-2 border-aapg-gold mb-3 shadow-sm bg-gray-100 shrink-0">
-                <img
-                  src={devPhoto}
-                  alt="Desarrollador"
-                  className="w-full h-full object-cover"
-                />
-              </div>
 
               <h5 className="font-heading text-lg font-bold text-[#0c2e63] leading-tight text-center">
                 Franco Nicolás Carballes

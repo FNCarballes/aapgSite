@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   server: {
     host: "::",
     port: 8080,
@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
 
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -27,8 +27,8 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     // Le decimos a Vite que arroje el build en la carpeta del backend
-    outDir: '../public',
+    outDir: 'dist',
     // Limpia la carpeta public antes de cada nuevo build
     emptyOutDir: true
   }
-}));
+});
