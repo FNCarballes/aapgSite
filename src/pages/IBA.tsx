@@ -5,6 +5,7 @@ import { Handshake, Award, ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import ConPetrel from "@/assets/ConPetrel.jpeg"
 import petrel2 from "@/assets/conPetrel4.png"
+import prentacionIBA2 from "@/assets/PresentacionIBA2.jpeg"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -96,6 +97,13 @@ const IBA = () => {
                   <SwiperSlide>
                     <img
                       src={petrel2}
+                      alt="Uso de Petrel vista 2"
+                      className="w-full h-full object-cover "
+                    />
+                  </SwiperSlide>
+                            <SwiperSlide>
+                    <img
+                      src={prentacionIBA2}
                       alt="Uso de Petrel vista 2"
                       className="w-full h-full object-cover "
                     />
