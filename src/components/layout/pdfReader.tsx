@@ -10,14 +10,11 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
-// 1. Leemos todos los PDFs de la carpeta especificada
+// 1. Leemos los PDFs LOCALES (los livianos)
 const pdfModules = import.meta.glob("@/assets/library/*.pdf", { eager: true });
 
-// 2. Transformamos el objeto en un array limpio y formateamos el título
-const pdfList = Object.keys(pdfModules).map((path) => {
+const localPdfs = Object.keys(pdfModules).map((path) => {
     const fileName = path.split("/").pop() || "Documento.pdf";
-    
-    // Limpiamos el nombre para el título: quitamos el ".pdf" y reemplazamos guiones por espacios
     const cleanTitle = fileName
       .replace(/\.pdf$/i, "")
       .replace(/[-_]/g, " ");
@@ -30,6 +27,38 @@ const pdfList = Object.keys(pdfModules).map((path) => {
     };
 });
 
+// 2. Definimos los PDFs EXTERNOS (Los pesados en Google Drive)
+const drivePdfs = [
+    {
+        name: "fundamentos_ing_en_yacimientos.pdf", 
+        title: "Fundamentos de Ingeniería de Yacimientos", 
+        url: "https://drive.google.com/file/d/1IiD4iQ5ZaJg2GhJlCkM14GVxnhx7oohl/view?usp=drive_link" // Tu link de Drive
+    },
+     {
+         name: "petrofísica_reservorios.pdf",
+         title: "Petrofísica de reservorios",
+         url: "https://drive.google.com/file/d/1sQ8eSyn1nuQkccs3mcHuKn0erYHcM9ID/view?usp=drive_link"
+     },
+         {
+        name: "play_based_exploration.pdf", 
+        title: "Play based exploration guide", 
+        url: "https://drive.google.com/file/d/1KYVj0UiEIWGIuv2ufX-ktNk_jEo7TPeR/view?usp=drive_link" // Tu link de Drive
+    },
+     {
+         name: "stinco.pdf",
+         title: "Stinco",
+         url: "https://drive.google.com/file/d/1TYbgr2n3NknpLDy-3j3z8hFar5SY7nx5/view?usp=drive_link"
+     },
+         {
+        name: "tratado_exploracion_sismica.pdf", 
+        title: "Tratado de explotación sísmica", 
+        url: "https://drive.google.com/file/d/1QMjTclex8Ffjce2yyOK6ub-MXRvJWcfT/view?usp=drive_link" // Tu link de Drive
+    },
+];
+
+// 3. FUSIONAMOS AMBAS LISTAS
+const allPdfs = [...localPdfs, ...drivePdfs];
+
 export const PdfSection = () => {
     return (
         <section className="bg-muted/50 py-16">
@@ -39,15 +68,15 @@ export const PdfSection = () => {
                     Biblioteca Técnica
                 </h2>
                 
-                {/* Fallback si no hay PDFs */}
-                {pdfList.length === 0 && (
+                {/* Fallback si no hay PDFs en ninguna de las dos listas */}
+                {allPdfs.length === 0 && (
                     <p className="text-center text-muted-foreground">
                         No hay documentos disponibles en la biblioteca en este momento.
                     </p>
                 )}
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {pdfList.map((pdf, index) => (
+                    {allPdfs.map((pdf, index) => (
                         <motion.div 
                             key={index} 
                             initial="hidden" 
