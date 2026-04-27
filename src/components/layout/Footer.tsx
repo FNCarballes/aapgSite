@@ -33,7 +33,13 @@ const Footer = () => {
             <ul className="space-y-3 text-sm flex flex-col items-center">
               <li className="flex items-center justify-center gap-2 text-primary-foreground/70">
                 <Mail className="h-4 w-4 shrink-0 text-aapg-gold" />
-                <span>uncaapgstudentchapter@gmail.com</span>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=uncaapgstudentchapter@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-md mt-1 font-medium text-center hover:text-[#FFFFFF] hover:underline transition-colors relative z-10 cursor-pointer"
+                >uncaapgstudentchapter@gmail.com
+                </a>
               </li>
               <li className="flex items-start justify-center  text-primary-foreground/70 max-w-2xs text-center">
                 <MapPin className="h-5 w-5 shrink-0 text-aapg-gold" />

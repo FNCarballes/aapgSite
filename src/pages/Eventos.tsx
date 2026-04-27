@@ -8,7 +8,8 @@ import CharlaDaniel from "@/assets/CharlaDaniel.png"
 import JuntaIBA from "@/assets/JuntaIBA.jpeg"
 import CharlaVictoriaYPaol from "@/assets/CharlaVictoriaYPaola.png"
 import Recaudacion from "@/assets/Recaudacion.jpeg"
-import FlyerCharlaImgPozo from "@/assets/ImgPozo.jpeg"
+import { events } from "@/hooks/hardcodes";
+import { formatEventDate } from "@/utils/dateParser";
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -16,14 +17,6 @@ const fadeInUp = {
 
 
 
-const events = [
-  {
-    title: "Charla extendida de análisis de imágenes de pozos",
-    date: "Lunes 4 de Mayo - 16 a 19 hs",
-    summary: "Se abordarán los fundamentos de las imágenes de pozo y su calidad, para luego aplicar estos conceptos en la interpretación de ejemplos reales",
-    location: "Aula 700 FCEFyN, con transmisión por Meet y YouTube", lecturer: "Geóloga Mariana Patamia", image: FlyerCharlaImgPozo, inscriptionRequired: false
-  },
-];
 
 
 const eventsPerformed = [{ title: "Hidrocarburos: Introducción a su cadena de valor", lecturer: "Hugo Gustavo Pelliza", description: "Charla sobre el alcance de la industria, cuáles son las distintas actividades, sus partes, el rol que tiene en la economía y en la sociedad, y cómo se genera valor.", image: CharlaHugo },
@@ -65,7 +58,7 @@ const Eventos = () => {
                     <h4 className="font-heading text-base text-muted-foreground font-medium">{ev.summary}</h4>
 
                     <div className="mt-3 space-y-1.5 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-2"><Clock className="h-3.5 w-3.5 text-aapg-gold" />{ev.date}</div>
+                      <div className="flex items-center gap-2"><Clock className="h-3.5 w-3.5 text-aapg-gold" />{formatEventDate(ev.date.from, ev.date.to)}</div>
                       <div className="flex items-center gap-2"><Users className="h-3.5 w-3.5 text-aapg-gold" />Disertante: {ev.lecturer}</div>
                       <div className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5 text-aapg-gold" />{ev.location}</div>
                     </div>

@@ -8,7 +8,8 @@ import Layout from "@/components/layout/Layout";
 import topologicoCordoba from "@/assets/topoCordoba.webp"
 import type { WorldNewsItem } from "./Noticias";
 const API_KEY = import.meta.env.VITE_API_KEY
-
+import { events } from "@/hooks/hardcodes";
+import { formatEventDate } from "@/utils/dateParser";
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -17,6 +18,8 @@ const fadeInUp = {
 const stagger = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
+
+const lastEvent = events[0]
 
 // Animated counter hook
 function useCounter(end: number, duration = 2000) {
@@ -49,8 +52,7 @@ function useCounter(end: number, duration = 2000) {
 
 // Countdown component
 function Countdown() {
-  const eventDate = new Date();
-  eventDate.setDate(eventDate.getDate() + 15);
+  const eventDate = new Date(lastEvent.date.from);
 
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(eventDate));
 
@@ -91,7 +93,7 @@ function getTimeLeft(target: Date) {
 const Index = () => {
 
   const [recientes, setRecientes] = useState<WorldNewsItem[]>([]);
-  console.log(recientes, "RECENTSS")
+
   useEffect(() => {
     const recentNews = async () => {
       try {
@@ -153,18 +155,20 @@ const Index = () => {
             </motion.p>
 
             <motion.div variants={fadeInUp} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button size="lg" className="bg-aapg-gold text-[#06183a] font-heading font-bold hover:bg-aapg-gold-light gap-2 px-8">
-                <Users className="h-5 w-5" />
-                Sumate al Chapter
-              </Button>
+              <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeRN5ZuRpVLJdCqdWuBBJZWEheK0oXrWey5XBHRamgFpPEtoA/viewform">
+                <Button size="lg" className="bg-aapg-gold text-[#06183a] font-heading font-bold hover:bg-aapg-gold-light gap-2 px-8">
+                  <Users className="h-5 w-5" />
+                  Sumate al Chapter
+                </Button>
+              </a>
               <Button size="lg" variant="outline" className="border-white/30 text-white bg-[#06183a]/50 font-heading font-semibold gap-2" asChild>
-                <Link to="/estudiantes">
+                <Link to="/eventos">
                   <Calendar className="h-5 w-5" />
                   Próximos eventos
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="text-white/80 border-white/30 hover:text-white bg-[#06183a]/50 font-heading font-semibold gap-2" asChild>
-                <Link to="/industria">
+                <Link to="/contacto">
                   <Mic className="h-5 w-5" />
                   Proponer una charla
                 </Link>
@@ -190,26 +194,30 @@ const Index = () => {
                     Próximo evento
                   </span>
                   <h3 className="mt-4 font-heading text-2xl font-bold text-primary-foreground md:text-3xl">
-                    Workshop: Interpretación Sísmica con IA
+                    {lastEvent.title}
                   </h3>
                   <div className="mt-4 space-y-2 text-sm text-primary-foreground/70">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-aapg-gold" />
-                      <span>28 de Febrero, 2026 — 14:00 hs</span>
+                      <span>{formatEventDate(lastEvent.date.from, lastEvent.date.to)}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin className="h-4 w-4 text-aapg-gold" />
-                      <span>Aula Magna, FCEFyN — UNC</span>
+                      <span>{lastEvent.location}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Users className="h-4 w-4 text-aapg-gold" />
-                      <span>Cupos limitados: 12/40 inscriptos</span>
+                      <span>Disertante: {lastEvent.lecturer}</span>
                     </div>
                   </div>
-                  <Button className="mt-6 bg-aapg-gold text-primary font-heading font-bold hover:bg-aapg-gold-light gap-2">
-                    Inscribirse ahora
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
+                  <div className="relative group">
+                    <Button className="mt-6 bg-aapg-gold text-primary font-heading font-bold hover:bg-aapg-gold-light gap-2">
+                      Inscribirse <ArrowRight className="h-4 w-4" />
+                    </Button>
+                    <div className="absolute bottom-full left-[90px] -translate-x-1/2 mb-3 w-56 rounded-2xl bg-white p-4 shadow-xl opacity-0 invisible transition-all duration-300 group-hover:visible group-hover:opacity-100 group-hover:-translate-y-2 z-50 flex flex-col items-center border border-gray-100 after:content-[''] after:absolute after:w-full after:h-8 after:-bottom-8 after:left-0">
+                      <p className="font-bold">Asistir puntualmente - Sin inscripción</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex flex-col items-center justify-center  bg-gradient-to-b from-[#0c2e63] to-[#06183a] p-8 md:p-10">
                   <p className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-muted-foreground">
