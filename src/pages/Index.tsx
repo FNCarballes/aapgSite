@@ -251,9 +251,7 @@ const Index = () => {
               {recientes.map((item, i) => (
                 <motion.div key={i} variants={fadeInUp}>
                   <Card className="group h-full cursor-pointer transition-shadow hover:shadow-lg">
-                    <div className="h-48 bg-secondary flex items-center justify-center">
-                      <BookOpen className="h-12 w-12 text-muted-foreground/30" />
-                    </div>
+                 
                     <CardContent className="p-6">
                       <div className="flex items-center gap-2 mb-3">
                         <span className="rounded-full bg-aapg-gold/10 px-2.5 py-0.5 text-xs font-semibold text-aapg-gold">
