@@ -41,7 +41,7 @@ const Header = () => {
             alt="AAPG Student Chapter Logo"
             className="h-6 w-auto lg:h-9 object-contain"
           />
-          <h1 className="text-white text-xl font-serif">Univesidad Nacional de Córdoba</h1>
+          <h1 className="text-white text-xl font-serif">Universidad Nacional de Córdoba</h1>
         </Link>
 
         {/* Desktop Nav (Lado derecho) */}
