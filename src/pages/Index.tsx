@@ -93,7 +93,7 @@ function getTimeLeft(target: Date) {
 const Index = () => {
 
   const [recientes, setRecientes] = useState<WorldNewsItem[]>([]);
-
+  console.log(recientes)
   useEffect(() => {
     const recentNews = async () => {
       try {
@@ -179,7 +179,7 @@ const Index = () => {
       </section>
 
       {/* Featured Event */}
-      <section className="relative -mt-16 z-20">
+      {/* <section className="relative -mt-16 z-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -232,57 +232,63 @@ const Index = () => {
             </Card>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Latest News */}
-      <section className="bg-muted/50 py-20">
+      <section className="relative z-50 bg-muted/50 py-20">
         <div className="container mx-auto px-4">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
-            <motion.div variants={fadeInUp} className="mb-10 text-center">
-              <h2 className="font-heading text-3xl font-bold text-primary sm:text-4xl">
-                Últimas Noticias
-              </h2>
-              <p className="mt-3 text-muted-foreground">
-                Enterate de las novedades del Chapter
-              </p>
-            </motion.div>
+          <div className="mb-10 text-center">
+            <h2 className="font-heading text-3xl font-bold text-primary sm:text-4xl">
+              Últimas Noticias
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Enterate de las novedades del Chapter
+            </p>
+          </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              {recientes.map((item, i) => (
-                <motion.div key={i} variants={fadeInUp}>
-                  <Card className="group h-full cursor-pointer transition-shadow hover:shadow-lg">
-                 
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="rounded-full bg-aapg-gold/10 px-2.5 py-0.5 text-xs font-semibold text-aapg-gold">
-                          {item.source}
-                        </span>
-                        <span className="text-xs text-muted-foreground">{item.published_at}</span>
-                      </div>
-                      <h3 className="font-heading text-lg font-bold text-foreground group-hover:text-aapg-blue transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {item.content}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+          {/* Condicionamos el renderizado a que haya noticias */}
+          {recientes.length > 0 ? (
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+              <div className="grid gap-6 md:grid-cols-3">
+                {recientes.map((item, i) => (
+                  <motion.div key={i} variants={fadeInUp}>
+                    <Card className="group h-full cursor-pointer transition-shadow hover:shadow-lg">
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="rounded-full bg-aapg-gold/10 px-2.5 py-0.5 text-xs font-semibold text-aapg-gold">
+                            {item.source}
+                          </span>
+                          <span className="text-xs text-muted-foreground">{item.published_at}</span>
+                        </div>
+                        <h3 className="font-heading text-lg font-bold text-foreground group-hover:text-aapg-blue transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {item.content}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div variants={fadeInUp} className="mt-8 text-center">
+                <Button variant="outline" className="font-heading font-semibold gap-2" asChild>
+                  <Link to="/noticias">
+                    Ver todas las noticias
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
+          ) : (
+            // Opcional: Mostrar un estado de carga mientras llegan las noticias
+            <div className="flex justify-center mt-8">
+              <span className="text-muted-foreground">Cargando noticias...</span>
             </div>
-
-            <motion.div variants={fadeInUp} className="mt-8 text-center">
-              <Button variant="outline" className="font-heading font-semibold gap-2" asChild>
-                <Link to="/noticias">
-                  Ver todas las noticias
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-            </motion.div>
-          </motion.div>
+          )}
         </div>
       </section>
-
       {/* Value Proposition */}
       <section className="py-20">
         <div className="container mx-auto px-4">
