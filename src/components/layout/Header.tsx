@@ -25,10 +25,10 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ",
+        "fixed top-0 z-50 left-0 right-0 transition-all duration-300 ",
         // Degradado azul oscuro inspirado en la imagen que compartiste
         "bg-gradient-to-b from-[#0c2e63] to-[#06183a]",
-        isScrolled ? "shadow-lg" : ""
+        // isScrolled ? "shadow-lg" : ""
       )}
     >
       {/* justify-between separa el logo a la izquierda y el menú a la derecha */}

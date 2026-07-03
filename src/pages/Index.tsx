@@ -177,65 +177,8 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Featured Event */}
-      {/* <section className="relative -mt-16 z-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Card className="overflow-hidden border-none  shadow-2xl">
-              <div className="grid md:grid-cols-2">
-                <div className="bg-gradient-to-b from-[#0c2e63] to-[#06183a] p-8 md:p-10">
-                  <span className="inline-block rounded bg-aapg-gold/20 px-3 py-1 font-heading text-xs font-semibold uppercase tracking-wider text-aapg-gold">
-                    Próximo evento
-                  </span>
-                  <h3 className="mt-4 font-heading text-2xl font-bold text-primary-foreground md:text-3xl">
-                    {lastEvent.title}
-                  </h3>
-                  <div className="mt-4 space-y-2 text-sm text-primary-foreground/70">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-aapg-gold" />
-                      <span>{formatEventDate(lastEvent.date.from, lastEvent.date.to)}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-aapg-gold" />
-                      <span>{lastEvent.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-aapg-gold" />
-                      <span>Disertante: {lastEvent.lecturer}</span>
-                    </div>
-                  </div>
-                  <div className="relative group">
-                    <Button className="mt-6 bg-aapg-gold text-primary font-heading font-bold hover:bg-aapg-gold-light gap-2">
-                      Inscribirse <ArrowRight className="h-4 w-4" />
-                    </Button>
-                    <div className="absolute bottom-full left-[90px] -translate-x-1/2 mb-3 w-56 rounded-2xl bg-white p-4 shadow-xl opacity-0 invisible transition-all duration-300 group-hover:visible group-hover:opacity-100 group-hover:-translate-y-2 z-50 flex flex-col items-center border border-gray-100 after:content-[''] after:absolute after:w-full after:h-8 after:-bottom-8 after:left-0">
-                      <p className="font-bold">Asistir puntualmente - Sin inscripción</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center justify-center  bg-gradient-to-b from-[#0c2e63] to-[#06183a] p-8 md:p-10">
-                  <p className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                    Comienza en
-                  </p>
-                  <Countdown />
-                  <p className="mt-6 text-center text-sm text-muted-foreground">
-                    No te pierdas esta oportunidad de aprender sobre las últimas tecnologías en interpretación sísmica.
-                  </p>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
-        </div>
-      </section> */}
-
       {/* Latest News */}
-      <section className="relative z-50 bg-muted/50 py-20">
+      <section className="relative z-0 bg-muted/50 py-20">
         <div className="container mx-auto px-4">
           <div className="mb-10 text-center">
             <h2 className="font-heading text-3xl font-bold text-primary sm:text-4xl">

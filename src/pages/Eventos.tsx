@@ -41,7 +41,8 @@ const Eventos = () => {
         </div>
       </section>
 
-      <section className="bg-muted/50 py-16">
+{/* //SECCION PROXIMOS EVENTOS - NO BORRAR */}
+      {/* <section className="bg-muted/50 py-16">
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center font-heading text-3xl font-bold text-primary">
             Próximos Eventos
@@ -76,7 +77,7 @@ const Eventos = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
 
 
